@@ -5,10 +5,10 @@ int nbLig,nbCol,nbIles,minPonts;
 
 int main()
 {
-    printf("Entrez le nombre de ligne :");
+    printf("Entrez n :");
     scanf("%d",&nbLig);
     printf("\n");
-    printf("Entrez le nombre de colonne :");
+    printf("Entrez m :");
     scanf("%d",&nbCol);
 
     int grille[nbLig][nbCol];
@@ -17,6 +17,14 @@ int main()
             printf("grille[%d][%d] :",i,j);
             scanf("%d",&grille[i][j]);
         }
+    }
+    printf("\n\n");
+    //affichage
+    for(int i = 0; i<nbLig; i++){
+        for(int j = 0; j<nbCol;j++){
+            printf(" %d ",grille[i][j]);
+        }
+        printf("\n");
     }
 
     //chercher le nombre d'îles par ligne
@@ -34,11 +42,9 @@ int main()
             }
         }
     }
-    printf("Iles par ligne : %d", ilesParLig);
-
     // chercher le nombre exacte d'iles dans la grille
 
-    //parcourir la grille jusq'àl'avant dernière ligne
+    //parcourir la grille jusq'à l'avant dernière ligne
     for(int i =0; i<nbLig-1;i++){
          for(int j = 0; j<nbCol; j++){
             //si occurence = 1, vérifier si voisin bas = 1
@@ -51,17 +57,14 @@ int main()
          }
     }
     nbIles = ilesParLig;
-    printf("Le nombre d'iles dans la grille est : %d",nbIles);
 
     //chercher le nb minimum de ponts : minPonts = nbIles - 1
     if(nbIles <= 1){
-        minPonts = 0;
+        printf("\nNombre d'ile inferieur ou egal a 1\nMin pont(s) :%d",minPonts);
     }else{
          minPonts = nbIles - 1;
+         printf("\nNombre d'ile : %d\nMin pont(s) :%d",nbIles,minPonts);
     }
-    printf("Le nombre minimum de ponts pour relier %d iles est : %d",nbIles,minPonts);
-
-
-    //affichage
+    printf("\n\n");
     return 0;
 }
